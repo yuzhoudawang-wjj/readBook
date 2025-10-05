@@ -1,0 +1,290 @@
+// 由于LESS和SCSS语法不兼容，暂时注释掉导入
+// @import "./styles/variables.scss";
+// @import "./styles/mixins.scss";
+
+// 全局样式重置
+* {
+  box-sizing: border-box;
+}
+
+page {
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+    'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-size: 24rpx;
+  line-height: 1.4;
+  color: #333;
+  background-color: #f8f9fa;
+}
+
+// 通用工具类
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.text-ellipsis-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.text-ellipsis-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-start {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.flex-end {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-column-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+// 间距工具类
+.m-xs {
+  margin: 8rpx;
+}
+
+.m-sm {
+  margin: 16rpx;
+}
+
+.m-md {
+  margin: 24rpx;
+}
+
+.m-lg {
+  margin: 32rpx;
+}
+
+.m-xl {
+  margin: 48rpx;
+}
+
+.mt-xs {
+  margin-top: 8rpx;
+}
+
+.mt-sm {
+  margin-top: 16rpx;
+}
+
+.mt-md {
+  margin-top: 24rpx;
+}
+
+.mt-lg {
+  margin-top: 32rpx;
+}
+
+.mt-xl {
+  margin-top: 48rpx;
+}
+
+.mb-xs {
+  margin-bottom: 8rpx;
+}
+
+.mb-sm {
+  margin-bottom: 16rpx;
+}
+
+.mb-md {
+  margin-bottom: 24rpx;
+}
+
+.mb-lg {
+  margin-bottom: 32rpx;
+}
+
+.mb-xl {
+  margin-bottom: 48rpx;
+}
+
+.ml-xs {
+  margin-left: 8rpx;
+}
+
+.ml-sm {
+  margin-left: 16rpx;
+}
+
+.ml-md {
+  margin-left: 24rpx;
+}
+
+.ml-lg {
+  margin-left: 32rpx;
+}
+
+.ml-xl {
+  margin-left: 48rpx;
+}
+
+.mr-xs {
+  margin-right: 8rpx;
+}
+
+.mr-sm {
+  margin-right: 16rpx;
+}
+
+.mr-md {
+  margin-right: 24rpx;
+}
+
+.mr-lg {
+  margin-right: 32rpx;
+}
+
+.mr-xl {
+  margin-right: 48rpx;
+}
+
+.p-xs {
+  padding: 8rpx;
+}
+
+.p-sm {
+  padding: 16rpx;
+}
+
+.p-md {
+  padding: 24rpx;
+}
+
+.p-lg {
+  padding: 32rpx;
+}
+
+.p-xl {
+  padding: 48rpx;
+}
+
+.pt-xs {
+  padding-top: 8rpx;
+}
+
+.pt-sm {
+  padding-top: 16rpx;
+}
+
+.pt-md {
+  padding-top: 24rpx;
+}
+
+.pt-lg {
+  padding-top: 32rpx;
+}
+
+.pt-xl {
+  padding-top: 48rpx;
+}
+
+.pb-xs {
+  padding-bottom: 8rpx;
+}
+
+.pb-sm {
+  padding-bottom: 16rpx;
+}
+
+.pb-md {
+  padding-bottom: 24rpx;
+}
+
+.pb-lg {
+  padding-bottom: 32rpx;
+}
+
+.pb-xl {
+  padding-bottom: 48rpx;
+}
+
+.pl-xs {
+  padding-left: 8rpx;
+}
+
+.pl-sm {
+  padding-left: 16rpx;
+}
+
+.pl-md {
+  padding-left: 24rpx;
+}
+
+.pl-lg {
+  padding-left: 32rpx;
+}
+
+.pl-xl {
+  padding-left: 48rpx;
+}
+
+.pr-xs {
+  padding-right: 8rpx;
+}
+
+.pr-sm {
+  padding-right: 16rpx;
+}
+
+.pr-md {
+  padding-right: 24rpx;
+}
+
+.pr-lg {
+  padding-right: 32rpx;
+}
+
+.pr-xl {
+  padding-right: 48rpx;
+}

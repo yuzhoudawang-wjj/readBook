@@ -1,0 +1,124 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+
+---
+
+description:
+globs:
+alwaysApply: true
+
+---
+
+# 追影小程序开发规范（Taro + TypeScript）
+
+> 该文档用于指导项目全员使用 **Taro + TypeScript** 技术栈进行微信小程序开发，保证代码质量、统一开发体验，并提升团队协作效率。
+
+---
+
+## 1 项目初始化
+
+1. 使用 `npm create taro@latest` 初始化项目。
+2. 选择 **React + TypeScript + 微信小程序** 模板。
+3. 统一使用 **npm** 管理依赖，禁止混用 yarn / pnpm。
+4. 目录结构示例：
+   ```text
+   ├─src
+   │  ├─pages            // 页面级组件
+   │  ├─components       // 通用业务组件
+   │  ├─hooks            // 自定义 Hooks
+   │  ├─services         // 网络请求封装
+   │  ├─stores           // Zustand 状态管理
+   │  ├─utils            // 工具函数
+   │  ├─types            // 类型定义 *.d.ts
+   │  └─app.tsx          // 入口文件
+   └─project.config.json // 微信开发者工具配置
+   ```
+
+## 2 编码规范
+
+1. **语言**：全部使用 **TypeScript 4+**，开启 `strict`。
+2. **框架**：使用 **React 18 函数组件 + Hooks**，禁止类组件。
+3. **状态管理**：优先使用 **Zustand**；不要使用 redux！！！全局 Context 仅限全局主题、登录态等。
+4. **样式**：使用 `scss`，启用 `cssModules`；颜色、尺寸写入 `variables.scss`。
+5. **国际化**：
+   - 所有可见文本必须包裹 `locale('文本')`；第二个入参留空。
+   - 每个组件必须引入 `import { locale } from '@/utils/locale'`。
+6. **命名**：
+   - 组件、Hook：大驼峰 `UserCard`、`useUserInfo`。
+   - 文件、变量：小驼峰 `userList.ts`、`isLoading`。
+7. **提交**：遵循 [Conventional Commits](https://www.conventionalcommits.org/) 规范。
+
+## 3 页面与路由
+
+1. 每个页面放置于 `src/pages/<name>/index.tsx`；页面级样式 `index.module.scss`。
+2. 在 `app.config.ts` 中统一注册路由；使用 **分包加载** (`subPackages`) 优化首屏。
+3. 路由跳转统一封装 `navigateTo`、`redirectTo` 方法，统一错误处理。
+
+## 4 组件开发
+
+1. 组件必须具备：`props` 类型、默认值、JSDoc 注释、`memo` 或 `forwardRef`。
+2. Prop 名统一使用 **camelCase**；避免将函数作为 children。
+3. UI 组件优先使用 **Taro UI 3**，如不满足需求再自研。
+4. 组件事件以 `onXxx` 命名，回调类型 `React.FC<Props>` 或 `() => void`。
+
+## 5 网络请求
+
+1. 使用 `@tarojs/taro` 的 `request`，二次封装为 `request.ts`：
+   - 自动携带 token / cookie。
+   - 统一错误码处理、兜底弹窗。
+2. API 函数以 `getUserInfo()`、`postTrack()` 名命名，放置于 `src/services`。
+3. 所有接口请求与响应定义 **TypeScript 类型**。
+
+## 6 状态管理（Zustand）
+
+1. Store 文件放在 `src/stores/<name>.ts`。例如 `src/stores/user.ts`。
+2. Store 内部必须暴露：**state**、**actions**，禁止直接修改 state。
+3. 使用 `persist` 中间件持久化关键数据到 `Taro.setStorageSync`。
+
+## 7 性能优化
+
+1. 使用 **代码分割** + **懒加载 (`React.lazy`, `Suspense`)**，首屏不加载重量级页面。
+2. 对高频渲染组件使用 `memo`、`useCallback`、`useMemo`。
+3. 图片资源使用 **网络图片 + WebP**，使用 `Taro.getImageInfo` 缓存宽高。
+4. 关闭调试日志，在生产构建中移除 `console.*`。
+
+## 8 测试与质量保障
+
+1. 单元测试：使用 **Vitest** + **React Testing Library**。
+2. `git commit` 前执行 `lint-staged`：
+   - `eslint --fix`、`stylelint --fix`、`prettier --write`、`vitest run`。
+3. 持续集成：GitHub Actions 执行 `npm run build:weapp`、测试、产物上传。
+
+## 9 安全与合规
+
+1. 接口签名、鉴权 token 需后端颁发，前端只做透传。
+2. 敏感数据加密存储 `AES`。密钥由后端返回。
+3. 所有外链、用户生成内容需走内容安全接口 `security.msgSecCheck`。
+
+## 10 日志与监控
+
+1. 使用 `@tarojs/taro` `report` 上报自定义埋点。
+2. 页面错误统一 `window.onerror` 捕获，使用企业内部监控上报。
+
+## 11 版本发布流程
+
+1. `develop` 分支：日常开发。
+2. `release/*`：版本发布准备。
+3. `main`：线上代码，禁止直接 push。
+4. 微信开发者工具上传体验版 -> TestFlight -> 正式版。
+
+## 12 常用脚本
+
+| 命令                  | 说明                    |
+| --------------------- | ----------------------- |
+| `npm run dev:weapp`   | 微信小程序开发模式      |
+| `npm run build:weapp` | 构建生产包              |
+| `npm run lint`        | 运行 ESLint + Stylelint |
+| `npm run test`        | 运行所有单元测试        |
+
+---
+
+> 如有不符合规范的情况，请及时在 PR 中指出并修改，确保所有人对齐统一的最佳实践。

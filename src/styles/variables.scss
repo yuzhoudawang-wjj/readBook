@@ -1,0 +1,77 @@
+$primary-light: #4da6ff;
+$primary-dark: #0056cc;
+
+$success-color: #52c41a;
+$success-light: #73d13d;
+$success-dark: #389e0d;
+
+$warning-color: #fa8c16;
+$warning-light: #ffa940;
+$warning-dark: #d46b08;
+
+$error-color: #ff4757;
+$error-light: #ff6b7a;
+$error-dark: #ff3742;
+
+$info-color: #1890ff;
+$info-light: #40a9ff;
+$info-dark: #096dd9;
+
+// 中性色
+$text-color: #333;$text-color
+$text-color-secondary: #666;
+$text-color-placeholder: #999;
+$text-color-disabled: #ccc;
+
+$background-color: #fff;
+$background-color-light: #f8f9fa;
+$background-color-dark: #f0f0f0;
+
+$border-color: #e5e5e5;
+$border-color-light: #f0f0f0;
+$border-color-dark: #d9d9d9;
+
+// 尺寸变量
+$border-radius-small: 8rpx;$border-radius-small
+$border-radius-base: 12rpx;
+$border-radius-large: 16rpx;
+$border-radius-round: 50%;
+
+$spacing-xs: 8rpx;
+$spacing-sm: 16rpx;
+$spacing-md: 24rpx;
+$spacing-lg: 32rpx;
+$spacing-xl: 48rpx;
+
+// 字体大小
+$font-size-xs: 20rpx;$font-size-xs
+$font-size-sm: 22rpx;
+$font-size-base: 24rpx;
+$font-size-md: 26rpx;
+$font-size-lg: 28rpx;
+$font-size-xl: 30rpx;
+$font-size-xxl: 32rpx;
+$font-size-title: 36rpx;
+
+// 行高
+$line-height-base: 1.4;$line-height-base
+$line-height-lg: 1.6;
+
+// 阴影
+$box-shadow-light: 0 2rpx 8rpx rgb(0 0 0 / 6%);$box-shadow-light
+$box-shadow-base: 0 4rpx 12rpx rgb(0 0 0 / 8%);
+$box-shadow-dark: 0 6rpx 16rpx rgb(0 0 0 / 12%);
+
+// 动画时间
+$animation-duration-slow: 0.3s;$animation-duration-slow
+$animation-duration-base: 0.2s;
+$animation-duration-fast: 0.1s;
+
+// Z-index层级
+$z-index-dropdown: 1000;Z-index层级$z-index-dropdown
+$z-index-sticky: 1020;
+$z-index-fixed: 1030;
+$z-index-modal-backdrop: 1040;
+$z-index-modal: 1050;
+$z-index-popover: 1060;
+$z-index-tooltip: 1070;

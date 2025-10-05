@@ -1,0 +1,211 @@
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f8f9fa;
+}
+
+.header {
+  background: #fff;
+  padding: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2rpx 8rpx rgb(0 0 0 / 6%);
+}
+
+.backBtn,
+.editBtn {
+  background: #f0f0f0;
+  color: #333;
+  border: none;
+  border-radius: 8rpx;
+  font-size: 24rpx;
+  padding: 0 16rpx;
+  height: 56rpx;
+  line-height: 56rpx;
+  
+  &:active {
+    background: #e0e0e0;
+  }
+}
+
+.title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333;
+}
+
+.content {
+  flex: 1;
+  padding: 24rpx;
+  overflow-y: auto;
+}
+
+.loading {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  color: #666;
+}
+
+.section {
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  margin-bottom: 24rpx;
+  box-shadow: 0 2rpx 12rpx rgb(0 0 0 / 6%);
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24rpx;
+}
+
+.sectionTitle {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #333;
+}
+
+.status {
+  padding: 8rpx 16rpx;
+  border-radius: 20rpx;
+  font-size: 22rpx;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.infoItem {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+  gap: 24rpx;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.infoLabel {
+  flex: 0 0 auto;
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1.5;
+  min-width: 120rpx;
+}
+
+.infoValue {
+  flex: 1;
+  font-size: 26rpx;
+  color: #333;
+  line-height: 1.5;
+  text-align: right;
+  word-break: break-all;
+}
+
+.urlContainer {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  gap: 16rpx;
+}
+
+.urlText {
+  flex: 1;
+  font-size: 24rpx;
+  color: #666;
+  line-height: 1.4;
+  word-break: break-all;
+}
+
+.copyBtn {
+  flex: 0 0 auto;
+  background: #f0f0f0;
+  color: #333;
+  border: none;
+  border-radius: 6rpx;
+  font-size: 22rpx;
+  padding: 0 12rpx;
+  height: 48rpx;
+  line-height: 48rpx;
+  
+  &:active {
+    background: #e0e0e0;
+  }
+}
+
+.pickerValue {
+  flex: 1;
+  font-size: 26rpx;
+  color: #333;
+  text-align: right;
+  padding: 8rpx 0;
+  border-bottom: 1rpx solid #e0e0e0;
+  
+  &:active {
+    background: #f8f9fa;
+  }
+}
+
+.actions {
+  padding: 24rpx;
+  background: #fff;
+  box-shadow: 0 -2rpx 8rpx rgb(0 0 0 / 6%);
+  display: flex;
+  gap: 16rpx;
+}
+
+.actionBtn {
+  flex: 1;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+  border: none;
+  border-radius: 12rpx;
+  transition: all 0.3s ease;
+  
+  &:active {
+    transform: translateY(2rpx);
+  }
+  
+  &.startBtn {
+    background: linear-gradient(135deg, #52c41a 0%, #389e0d 100%);
+    color: #fff;
+    box-shadow: 0 4rpx 16rpx rgb(82 196 26 / 30%);
+  }
+  
+  &.stopBtn {
+    background: linear-gradient(135deg, #fa8c16 0%, #d46b08 100%);
+    color: #fff;
+    box-shadow: 0 4rpx 16rpx rgb(250 140 22 / 30%);
+  }
+  
+  &.deleteBtn {
+    background: linear-gradient(135deg, #ff4757 0%, #ff3742 100%);
+    color: #fff;
+    box-shadow: 0 4rpx 16rpx rgb(255 71 87 / 30%);
+  }
+}
+
+.saveBtn {
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+  border-radius: 12rpx;
+  background: linear-gradient(135deg, #007aff 0%, #0056cc 100%);
+  box-shadow: 0 4rpx 16rpx rgb(0 122 255 / 30%);
+  transition: all 0.3s ease;
+  
+  &:active {
+    transform: translateY(2rpx);
+  }
+}

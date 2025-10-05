@@ -1,0 +1,203 @@
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f8f9fa;
+}
+
+.header {
+  background: #fff;
+  padding: 24rpx;
+  box-shadow: 0 2rpx 8rpx rgb(0 0 0 / 6%);
+}
+
+.headerContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24rpx;
+}
+
+.backBtn,
+.modeBtn {
+  background: #f0f0f0;
+  color: #333;
+  border: none;
+  border-radius: 8rpx;
+  font-size: 24rpx;
+  padding: 0 16rpx;
+  height: 56rpx;
+  line-height: 56rpx;
+  
+  &:active {
+    background: #e0e0e0;
+  }
+}
+
+.title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333;
+}
+
+.stats {
+  display: flex;
+  gap: 32rpx;
+  margin-bottom: 24rpx;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rpx;
+}
+
+.statValue {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #007aff;
+}
+
+.statLabel {
+  font-size: 20rpx;
+  color: #666;
+}
+
+.filters {
+  display: flex;
+  gap: 16rpx;
+}
+
+.filterBtn {
+  flex: 1;
+  height: 56rpx;
+  line-height: 56rpx;
+  font-size: 24rpx;
+  border: 1rpx solid #e0e0e0;
+  border-radius: 8rpx;
+  background: #fff;
+  color: #666;
+  
+  &:active {
+    background: #f8f9fa;
+  }
+  
+  &.active {
+    background: #007aff;
+    color: #fff;
+    border-color: #007aff;
+  }
+}
+
+.content {
+  flex: 1;
+  padding-bottom: 120rpx; // 为批量操作栏留出空间
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 120rpx 48rpx;
+  text-align: center;
+}
+
+.emptyIcon {
+  font-size: 80rpx;
+  margin-bottom: 24rpx;
+  opacity: 0.5;
+}
+
+.emptyText {
+  font-size: 28rpx;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 32rpx;
+}
+
+.emptyBtn {
+  width: 200rpx;
+  height: 64rpx;
+  line-height: 64rpx;
+  font-size: 26rpx;
+  border-radius: 32rpx;
+}
+
+.list {
+  padding-bottom: 24rpx;
+}
+
+.batchBar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  padding: 24rpx;
+  box-shadow: 0 -2rpx 8rpx rgb(0 0 0 / 6%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24rpx;
+}
+
+.batchInfo {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.selectAllBtn {
+  background: #f0f0f0;
+  color: #333;
+  border: none;
+  border-radius: 8rpx;
+  font-size: 24rpx;
+  padding: 0 16rpx;
+  height: 56rpx;
+  line-height: 56rpx;
+  
+  &:active {
+    background: #e0e0e0;
+  }
+}
+
+.selectedCount {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.batchActions {
+  display: flex;
+  gap: 12rpx;
+}
+
+.batchBtn {
+  min-width: 80rpx;
+  height: 56rpx;
+  line-height: 56rpx;
+  font-size: 24rpx;
+  border: none;
+  border-radius: 8rpx;
+  background: #007aff;
+  color: #fff;
+  
+  &:active {
+    background: #0056cc;
+  }
+  
+  &[disabled] {
+    opacity: 0.5;
+    background: #ccc;
+  }
+  
+  &.deleteBtn {
+    background: #ff4757;
+    
+    &:active {
+      background: #ff3742;
+    }
+  }
+}

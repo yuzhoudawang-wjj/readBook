@@ -1,0 +1,133 @@
+.container {
+  padding: 32rpx;
+  background: #fff;
+  border-radius: 16rpx;
+  margin: 24rpx;
+  box-shadow: 0 4rpx 20rpx rgb(0 0 0 / 8%);
+}
+
+.inputWrapper {
+  position: relative;
+  border: 2rpx solid #e5e5e5;
+  border-radius: 12rpx;
+  background: #f8f9fa;
+  transition: all 0.3s ease;
+  
+  &.focused {
+    border-color: #007aff;
+    background: #fff;
+    box-shadow: 0 0 0 4rpx rgb(0 122 255 / 10%);
+  }
+}
+
+.input {
+  width: 100%;
+  padding: 24rpx 80rpx 24rpx 24rpx;
+  font-size: 28rpx;
+  line-height: 1.4;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.placeholder {
+  color: #999;
+}
+
+.clearBtn {
+  position: absolute;
+  right: 16rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48rpx;
+  height: 48rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ddd;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  
+  &:active {
+    background: #ccc;
+    transform: translateY(-50%) scale(0.95);
+  }
+}
+
+.clearIcon {
+  font-size: 32rpx;
+  color: #666;
+  line-height: 1;
+}
+
+.actions {
+  display: flex;
+  gap: 16rpx;
+  margin-top: 24rpx;
+  align-items: center;
+}
+
+.pasteBtn {
+  flex: 0 0 auto;
+  background: #f0f0f0;
+  color: #333;
+  border: none;
+  border-radius: 8rpx;
+  font-size: 24rpx;
+  padding: 0 24rpx;
+  height: 64rpx;
+  line-height: 64rpx;
+  
+  &:active {
+    background: #e0e0e0;
+  }
+  
+  &[disabled] {
+    opacity: 0.5;
+  }
+}
+
+.submitBtn {
+  flex: 1;
+  background: linear-gradient(135deg, #007aff 0%, #0056cc 100%);
+  color: #fff;
+  border: none;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+  height: 80rpx;
+  line-height: 80rpx;
+  box-shadow: 0 4rpx 16rpx rgb(0 122 255 / 30%);
+  transition: all 0.3s ease;
+  
+  &:active {
+    transform: translateY(2rpx);
+    box-shadow: 0 2rpx 8rpx rgb(0 122 255 / 30%);
+  }
+  
+  &[disabled] {
+    opacity: 0.5;
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+.tips {
+  margin-top: 32rpx;
+  padding: 24rpx;
+  background: #f8f9fa;
+  border-radius: 12rpx;
+  border-left: 6rpx solid #007aff;
+}
+
+.tipItem {
+  font-size: 24rpx;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 8rpx;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
