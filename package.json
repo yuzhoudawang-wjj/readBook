@@ -81,6 +81,7 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "sass": "^1.91.0",
+    "use-sync-external-store": "^1.6.0",
     "zustand": "^5.0.8"
   },
   "devDependencies": {

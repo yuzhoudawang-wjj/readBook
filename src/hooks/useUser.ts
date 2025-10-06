@@ -1,6 +1,6 @@
 import { useEffect, useCallback } from 'react'
 import Taro from '@tarojs/taro'
-import { useUserContext } from '../contexts/UserContext'
+import { useUserStore } from '../stores/user'
 import {
   getUserInfo,
   updateUserInfo,
@@ -17,21 +17,23 @@ import { User } from '../types/api'
 import { locale } from '../utils/locale'
 
 export const useUser = () => {
-  const {
-    state: { userInfo, coinTransactions, pushLimit, adReward, loading, error },
-    setUserInfo,
-    updateUserInfo: updateUserInfoInStore,
-    addCoinTransaction,
-    setPushLimit,
-    setAdReward,
-    spendCoins,
-    earnCoins,
-    setLoading,
-    setError,
-    logout: logoutFromStore,
-    isLoggedIn,
-    getUserStats
-  } = useUserContext()
+  const userInfo = useUserStore((s) => s.userInfo)
+  const coinTransactions = useUserStore((s) => s.coinTransactions)
+  const pushLimit = useUserStore((s) => s.pushLimit)
+  const adReward = useUserStore((s) => s.adReward)
+  const loading = useUserStore((s) => s.loading)
+  const error = useUserStore((s) => s.error)
+  const setUserInfo = useUserStore((s) => s.setUserInfo)
+  const addCoinTransaction = useUserStore((s) => s.addCoinTransaction)
+  const setPushLimit = useUserStore((s) => s.setPushLimit)
+  const setAdReward = useUserStore((s) => s.setAdReward)
+  const spendCoins = useUserStore((s) => s.spendCoins)
+  const earnCoins = useUserStore((s) => s.earnCoins)
+  const setLoading = useUserStore((s) => s.setLoading)
+  const setError = useUserStore((s) => s.setError)
+  const logoutFromStore = useUserStore((s) => s.logout)
+  const isLoggedIn = useUserStore((s) => s.isLoggedIn)
+  const getUserStats = useUserStore((s) => s.getUserStats)
 
   // 登录
   const loginUser = useCallback(async () => {
@@ -112,8 +114,8 @@ export const useUser = () => {
       setLoading(true)
       setError(null)
 
-      const userInfo = await getUserInfo()
-      setUserInfo(userInfo)
+      const fetchedUserInfo = await getUserInfo()
+      setUserInfo(fetchedUserInfo)
     } catch (err: any) {
       console.error('Load user info error:', err)
       setError(err.message || locale('加载用户信息失败'))
@@ -202,12 +204,12 @@ export const useUser = () => {
       setError(null)
 
       // 调用微信广告API
-      const adUnitId = 'your-ad-unit-id' // 替换为实际的广告位ID
+      const adUnitId = 'your-ad-unit-id'
 
       await new Promise((resolve, reject) => {
         const rewardedVideoAd = Taro.createRewardedVideoAd({
           adUnitId
-        })
+        } as any)
 
         rewardedVideoAd.onLoad(() => {
           console.log('广告加载成功')
@@ -219,7 +221,7 @@ export const useUser = () => {
         })
 
         rewardedVideoAd.onClose((res) => {
-          if (res && res.isEnded) {
+          if (res && (res as any).isEnded) {
             resolve(res)
           } else {
             reject(new Error(locale('请观看完整广告')))
@@ -284,24 +286,21 @@ export const useUser = () => {
         setLoading(true)
         setError(null)
 
-        // 调用微信订阅消息API
-        const result = await Taro.requestSubscribeMessage({
+        const result = (await Taro.requestSubscribeMessage({
           tmplIds: templateIds
-        })
+        } as any)) as any
 
-        // 处理用户授权结果
         const acceptedTemplates: string[] = []
         const rejectedTemplates: string[] = []
 
         Object.keys(result).forEach((templateId) => {
-          if (result[templateId] === 'accept') {
+          if ((result as any)[templateId] === 'accept') {
             acceptedTemplates.push(templateId)
           } else {
             rejectedTemplates.push(templateId)
           }
         })
 
-        // 调用后端接口记录订阅状态
         await requestSubscription(templateIds)
 
         if (acceptedTemplates.length > 0) {
@@ -344,10 +343,9 @@ export const useUser = () => {
     if (token && !userInfo) {
       loadUserInfo()
     }
-  }, [userInfo]) // 只依赖 userInfo，避免 loadUserInfo 引起的循环
+  }, [userInfo, loadUserInfo])
 
   return {
-    // 数据
     userInfo,
     coinTransactions,
     pushLimit,
@@ -357,7 +355,6 @@ export const useUser = () => {
     isLoggedIn: isLoggedIn(),
     stats: getUserStats(),
 
-    // 方法
     loginUser,
     logoutUser,
     loadUserInfo,

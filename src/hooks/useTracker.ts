@@ -1,7 +1,7 @@
 import { useEffect, useCallback } from 'react'
 import Taro from '@tarojs/taro'
-import { useTrackerContext } from '../contexts/TrackerContext'
-import { useUserContext } from '../contexts/UserContext'
+import { useTrackerStore } from '../stores/tracker'
+import { useUserStore } from '../stores/user'
 import {
   getTrackerList,
   createTracker,
@@ -18,23 +18,23 @@ import { CreateTrackerRequest, UpdateTrackerRequest } from '../types/api'
 import { locale } from '../utils/locale'
 
 export const useTracker = () => {
-  const {
-    state: { list, loading, error },
-    setList,
-    addTracker: addTrackerToStore,
-    updateTracker: updateTrackerInStore,
-    removeTracker: removeTrackerFromStore,
-    batchRemove: batchRemoveFromStore,
-    startTracker: startTrackerInStore,
-    stopTracker: stopTrackerInStore,
-    batchStart: batchStartInStore,
-    batchStop: batchStopInStore,
-    setLoading,
-    setError,
-    getStats
-  } = useTrackerContext()
+  const list = useTrackerStore((s) => s.list)
+  const loading = useTrackerStore((s) => s.loading)
+  const error = useTrackerStore((s) => s.error)
+  const setList = useTrackerStore((s) => s.setList)
+  const addTrackerToStore = useTrackerStore((s) => s.addTracker)
+  const updateTrackerInStore = useTrackerStore((s) => s.updateTracker)
+  const removeTrackerFromStore = useTrackerStore((s) => s.removeTracker)
+  const batchRemoveFromStore = useTrackerStore((s) => s.batchRemove)
+  const startTrackerInStore = useTrackerStore((s) => s.startTracker)
+  const stopTrackerInStore = useTrackerStore((s) => s.stopTracker)
+  const batchStartInStore = useTrackerStore((s) => s.batchStart)
+  const batchStopInStore = useTrackerStore((s) => s.batchStop)
+  const setLoading = useTrackerStore((s) => s.setLoading)
+  const setError = useTrackerStore((s) => s.setError)
+  const getStats = useTrackerStore((s) => s.getStats)
 
-  const { spendCoins } = useUserContext()
+  const spendCoins = useUserStore((s) => s.spendCoins)
 
   // 加载追踪器列表
   const loadTrackers = useCallback(async () => {
@@ -346,7 +346,7 @@ export const useTracker = () => {
   // 初始化时加载数据
   useEffect(() => {
     loadTrackers()
-  }, []) // 只在组件挂载时执行一次
+  }, [loadTrackers])
 
   return {
     // 数据
